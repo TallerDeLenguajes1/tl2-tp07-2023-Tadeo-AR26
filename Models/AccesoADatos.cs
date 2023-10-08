@@ -21,7 +21,7 @@ public class AccesoADatos{
     public void guardarTareas(List<Tarea> tareas){
         string archivo = "Tareas.Json";
         string jsonText = JsonSerializer.Serialize(tareas);
-        using(var nuevoArchivo = new FileStream(archivo, FileMode.OpenOrCreate)){
+        using(var nuevoArchivo = new FileStream(archivo, FileMode.Create)){
             using(var strWriter = new StreamWriter(nuevoArchivo)){
                 strWriter.WriteLine("{0}", jsonText);
                 strWriter.Close();

@@ -17,7 +17,7 @@ public class ManejoTareas{
     }
 
     public void GuardarTareas(){
-        accesoADatos.guardarTareas(listaTareas);
+        accesoADatos.guardarTareas(listaTareas.ToList());
     }
     public static ManejoTareas GetInstance(){
         if(instance == null){
@@ -54,6 +54,9 @@ public class ManejoTareas{
         Tarea tareaEncontrada;
         tareaEncontrada = listaTareas.FirstOrDefault(tarea => tarea.Id == idTarea);
         listaTareas.Remove(tareaEncontrada);
+        foreach(Tarea tarea in ListaTareas){
+            Console.WriteLine(tarea.Titulo);
+        }
         AccesoADatos.guardarTareas(listaTareas);
         return listaTareas;
     }
